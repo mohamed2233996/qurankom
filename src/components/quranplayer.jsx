@@ -140,6 +140,7 @@ const Quranplayer = () => {
                         </label>
                         <select value={choosereciter ? choosereciter : "اسم القارئ"}
                             onChange={(e) => setChoosereciter(e.target.value)}
+                            className="dark:bg-primary py-1 px-3 rounded-md shadow-md"
                             id='chooseReciter'
                         >
                             <option value="">اسم القارئ</option>
@@ -154,6 +155,7 @@ const Quranplayer = () => {
                         </label>
                         <select value={chooseriwayat ? chooseriwayat : "اسم الرواية"}
                             onChange={(e) => setChooseriwayat(e.target.value)}
+                            className="dark:bg-primary py-1 px-3 rounded-md shadow-md"
                             id='chooseRewayat'
                         >
                             <option value="">اسم الرواية</option>
@@ -168,6 +170,7 @@ const Quranplayer = () => {
                         </label>
                         <select value={choosesuwar ? choosesuwar : "اسم السورة"}
                             onChange={(e) => setChoosesuwar(e.target.value)}
+                            className="dark:bg-primary py-1 px-3 rounded-md shadow-md"
                             id='chooseSurah'
                         >
                             <option value="">اسم السورة</option>
