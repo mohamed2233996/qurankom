@@ -3,31 +3,72 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-color: #1d3d66;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  :root {}
+}
+
+body {}
+
+@layer base {
+  body {
+    @apply dark:bg-gray-800 bg-white
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.slider__carousel .nextarr,
+.slider__carousel .prevarr {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  padding: 10px;
+  background: #00000040;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+  @apply text-white
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.slider__carousel .prevarr {
+  left: 10px;
+}
+
+.slider__carousel .nextarr {
+  right: 10px;
+}
+
+.slick-track {
+  display: flex;
+}
+
+.intro-dots {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.intro-slider-dot {
+  width: 10px;
+  height: 10px;
+  background: #ffffff73;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slick-active .intro-slider-dot {
+  background: #ffffff;
+}
+
+#audioPlayer{
+  width: 40%;
+  transition: 0.3s;
 }
