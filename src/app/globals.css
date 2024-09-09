@@ -71,3 +71,24 @@ body {}
 #audioPlayer{
   transition: 0.3s;
 }
+
+#fullAudioPlayer{
+  width: 100%;
+}
+
+#fullAudioPlayer::-webkit-media-controls{
+  border-radius: 0%;
+  border: none;
+  background: transparent;
+}
+
+#fullAudioPlayer::-webkit-media-controls-enclosure{
+  border-radius: 0%;
+  background: transparent;
+}
+
+#fullAudioPlayer::-webkit-media-controls-panel{
+  border-radius: 0%;
+  
+}
+

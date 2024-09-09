@@ -16,8 +16,6 @@ const Live = () => {
             .then(data => setLivedata(data.livetv))
     },[])
 
-    console.log(livedata)
-
     const playLive = (url) => {
         if (Hls.isSupported()) {
             var video = document.getElementById('live-video');
@@ -42,12 +40,13 @@ const Live = () => {
                     انضم الي احدي القنوات لبدء البث المباشر
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-8">
-                    {livedata?.map(data => (
-                        <button value={data?.url} onClick={
+                    {livedata?.map(
+                        (data, index) => (
+                        <button key={index} value={data?.url} onClick={
                             e => {
                                 playLive(e.target.value)
                             }
-                        } className='py-2 px-3 first-line:text-xl font-bold bg-primary text-white rounded-md border border-primary hover:bg-transparent hover:text-primary dark:hover:border-white dark:hover:text-white transition-all'>
+                        } className='cursor-pointer py-2 px-3 first-line:text-xl font-bold bg-primary text-white rounded-md border border-primary hover:bg-transparent hover:text-primary dark:hover:border-white dark:hover:text-white transition-all'>
                             {data.name}
                         </button>
                     ))}

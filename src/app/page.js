@@ -1,6 +1,6 @@
 import Intro from "@/components/Intro";
+import All from "@/components/all";
 import Live from "@/components/live";
-import Navbar from "@/components/navbar";
 import Quranplayer from "@/components/quranplayer";
 
 export default async function Home() {
@@ -9,10 +9,10 @@ export default async function Home() {
 });
   return (
     <>
-      <Navbar />
       <Intro />
       <Quranplayer />
       <Live />
+      <All />
     </>
   );
 }
