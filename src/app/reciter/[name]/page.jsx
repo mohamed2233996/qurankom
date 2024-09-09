@@ -56,7 +56,6 @@ const Page = () => {
     setSuwarendList(suwarlistData)
 
   }
-  console.log(suwarendList)
 
   const playSura = (sura) => {
     const audio = document.querySelector("#fullAudioPlayer");
@@ -82,7 +81,7 @@ const Page = () => {
                 <h1 className="text-3xl font-bold mb-4">{data?.name}</h1>
                 <p className='mt-2'>عدد السور المتوفره :</p>
                 {data?.moshaf?.map(moshaf => (
-                  <div className='flex flex-row gap-4 items-center'>
+                  <div key={moshaf.id} className='flex flex-row gap-4 items-center'>
                     <span>{moshaf.name}:</span>
                     <span key={moshaf.id}>{moshaf.surah_total}</span>
                   </div>
