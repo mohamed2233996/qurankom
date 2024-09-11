@@ -7,6 +7,7 @@ const Page = () => {
   const [suwarData, setSuwarData] = useState([]);
   const [suwarendList, setSuwarendList] = useState([]);
   const [playedsura, setPlayedsura] = useState([]);
+  const [visibleItems, setVisibleItems] = useState(20);
 
 
 
@@ -115,40 +116,57 @@ const Page = () => {
                 </button>
               </div>
             ))}
-            <div className='mt-10'>
-              <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                {suwarendList.map(suwar => (
-                  <li key={suwar.id} className='flex flex-row justify-between border border-gray-400 rounded-lg p-2'>
-                    <div>
-                      <h2 className='mb-2 font-bold'>{suwar.name}</h2>
-                      <p className='text-gray-400'>{suwar.makkia === 0 ?
-                        "سورة مدنيه"
-                        :
-                        "سورة مكيه"}</p>
-                    </div>
-                    <div className='flex flex-row items-center gap-3'>
-                      <a className='hover:text-gray-700 transition' href={suwar.value}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={32} height={32} fill={"none"}>
-                          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="1.5" />
-                          <path d="M12 7V12.5M10 11L11.2929 12.2929C11.6262 12.6262 11.7929 12.7929 12 12.7929C12.2071 12.7929 12.3738 12.6262 12.7071 12.2929L14 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M8.99023 16H14.9902" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </a>
+            <div className='my-10'>
+              {suwarendList.length === 0 ?
+                <p className='mt-6 text-xl text-center md:text-2xl'>اختر احد الروايات لعرض السور المتوفرة فيه</p>
+                :
+                <>
+                <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                  {suwarendList.slice(0, visibleItems).map(suwar => (
+                    <li key={suwar.id} className='flex flex-row justify-between border border-gray-400 rounded-lg p-2'>
+                      <div>
+                        <h2 className='mb-2 font-bold'>{suwar.name}</h2>
+                        <p className='text-gray-400'>{suwar.makkia === 0 ?
+                          "سورة مدنيه"
+                          :
+                          "سورة مكيه"}</p>
+                      </div>
+                      <div className='flex flex-row items-center gap-3'>
+                        <a className='hover:text-gray-700 transition' href={suwar.value}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={32} height={32} fill={"none"}>
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="1.5" />
+                            <path d="M12 7V12.5M10 11L11.2929 12.2929C11.6262 12.6262 11.7929 12.7929 12 12.7929C12.2071 12.7929 12.3738 12.6262 12.7071 12.2929L14 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M8.99023 16H14.9902" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </a>
 
-                      <button className='hover:text-gray-700 transition' onClick={
-                        e => {
-                          playSura(suwar)
-                        }
-                      }>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none">
-                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-                          <path d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z" fill="currentColor" />
-                        </svg>
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                        <button className='hover:text-gray-700 transition' onClick={
+                          e => {
+                            playSura(suwar)
+                          }
+                        }>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                            <path d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z" fill="currentColor" />
+                          </svg>
+                        </button>
+                      </div>
+                    </li>
+                  ))
+                  }
+                </ul>
+                <div className="flex justify-center mt-8">
+                <button
+                  onClick={() => setVisibleItems(prev => prev + 20)}
+                  className="flex flex-row gap-6 items-center py-2 px-3 first-line:text-xl font-bold bg-primary text-white rounded-md border border-primary hover:bg-transparent hover:text-primary dark:hover:border-white dark:hover:text-white transition-all">
+                  اظهار المزيد
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                    <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+                </>
+              }
             </div>
           </div>
         </div>
@@ -164,7 +182,7 @@ const Page = () => {
                   <div className='flex flex-row items-center justify-between gap-4'>
                     <a className='transition flex flex-row items-center justify-between gap-2
                   cursor-pointer py-2 px-3 first-line:text-xl font-bold bg-primary text-white rounded-md border border-primary hover:bg-transparent hover:text-primary hover:dark:text-gray-300 dark:border-white'
-                  >
+                    >
                       <p className='text-[20px]'>اعجاب</p>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={20} height={20} fill={"none"}>
                         <path d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />

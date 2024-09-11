@@ -12,10 +12,10 @@ const Navbar = () => {
                         <Link href="/" className="text-white hover:text-primary">الصفحة الرئيسية</Link>
                     </li>
                     <li className="mr-4">
-                        <Link href="/" className="text-white hover:text-primary">معلومات عنا</Link>
+                        <Link href="/aboutUs" className="text-white hover:text-primary">معلومات عنا</Link>
                     </li>
                     <li className="mr-4">
-                        <Link href="/" className="text-white hover:text-primary">تواصل معنا</Link>
+                        <Link href="/contact" className="text-white hover:text-primary">تواصل معنا</Link>
                     </li>
                 </ul>
                 <Darkbtn />

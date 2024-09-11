@@ -103,7 +103,7 @@ const All = () => {
                             type="text"
                             onChange={handleSearch}
                             placeholder="البحث بأسم القارئ"
-                            className='bg-white rounded-lg border-2 p-1 shadow-md text-black border-gray-300 focus-visible:outline-gray-300 dark:border-gray-700 dark:focus-visible:outline-none'
+                            className='w-full bg-white rounded-lg border-2 p-1 shadow-md text-black border-gray-300 focus-visible:outline-gray-300 dark:border-gray-700 dark:focus-visible:outline-none'
                         />
                     </div>
                     <div className="flex flex-col items-center">
@@ -122,7 +122,7 @@ const All = () => {
                 {results.length === 0 ?
                     <p>لا توجد نتائج.</p>
                     :
-                    <p className='font-bold my-5'>
+                    <p className='font-bold my-5 text-center md:text-start'>
                         عدد القراءات المتوفرة: {results.length}
                         {loading && <p>جاري التحميل...</p>}
                         {error && <p className="error">{error}</p>}
